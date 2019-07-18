@@ -21,6 +21,8 @@ class Gamepad {
 
 	public var connected (default, null):Bool;
 	public var guid (get, never):String;
+	public var npadid (get, never):Int;
+	
 	public var id (default, null):Int;
 	public var name (get, never):String;
 	public var onAxisMove = new Event<GamepadAxis->Float->Void> ();
@@ -98,6 +100,13 @@ class Gamepad {
 
 	}
 
+	@:noCompletion private inline function get_npadid ():Int {
+		var n:Int = -1;
+		#if (lime_cffi && !macro && switch)
+			n = NativeCFFI.lime_gamepad_get_device_npadid (this.id);
+		#end
+		return n;
+	}
 
 	@:noCompletion private inline function get_name ():String {
 

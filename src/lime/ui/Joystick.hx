@@ -20,6 +20,7 @@ class Joystick {
 
 	public var connected (default, null):Bool;
 	public var guid (get, never):String;
+	public var npadid (get, never):Int;
 	public var id (default, null):Int;
 	public var name (get, never):String;
 	public var numAxes (get, never):Int;
@@ -97,7 +98,16 @@ class Joystick {
 		#end
 
 	}
+	
+	@:noCompletion private inline function get_npadid ():Int {
 
+		var n:Int = -1;
+		#if (lime_cffi && !macro && switch)
+			n = NativeCFFI.lime_joystick_get_device_npadid (this.id);
+		#end
+		return n;
+	}
+	
 
 	@:noCompletion private inline function get_name ():String {
 
@@ -105,7 +115,7 @@ class Joystick {
 		#if hl
 		return @:privateAccess String.fromUTF8 (NativeCFFI.lime_joystick_get_device_name (this.id));
 		#else
-		return NativeCFFI.lime_joystick_get_device_name (this.id);
+		return NativeCFFI.lime_joystick_get_device_name(this.id);
 		#end
 		#elseif (js && html5)
 		var devices = __getDeviceData ();

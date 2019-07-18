@@ -1618,6 +1618,19 @@ namespace lime {
 	}
 
 
+	#ifdef __NINTENDO_SWITCH__
+	int lime_gamepad_get_device_npadid (int id) {
+		
+		return Gamepad::GetDeviceNpadID (id);
+		
+	}
+	HL_PRIM int hl_lime_gamepad_get_device_npadid (int id) {
+
+		return Gamepad::GetDeviceNpadID (id);
+
+	}
+	#endif
+	
 	value lime_gzip_compress (value buffer, value bytes) {
 
 		#ifdef LIME_ZLIB
@@ -2203,6 +2216,19 @@ namespace lime {
 		return (vbyte*)Joystick::GetDeviceName (id);
 
 	}
+	
+	#ifdef __NINTENDO_SWITCH__
+	int lime_joystick_get_device_npadid (int id) {
+		
+		return Joystick::GetDeviceNpadID (id);
+		
+	}
+	HL_PRIM int hl_lime_joystick_get_device_npadid (int id) {
+
+		return Joystick::GetDeviceNpadID (id);
+
+	}
+	#endif
 
 
 	int lime_joystick_get_num_axes (int id) {

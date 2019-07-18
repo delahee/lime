@@ -92,6 +92,20 @@ namespace lime {
 		return SDL_JoystickName (joysticks[id]);
 
 	}
+	
+	#ifdef __NINTENDO_SWITCH__
+	const int Joystick::GetDeviceNpadID (int id) {
+		
+		int npadid = -1;
+		if (SDL_NintendoSwitch_JoystickNpadId(joysticks[id], &npadid) == 0) {
+		
+			return npadid;
+			
+		}
+		return npadid;
+		
+	}
+	#endif
 
 
 	int Joystick::GetNumAxes (int id) {

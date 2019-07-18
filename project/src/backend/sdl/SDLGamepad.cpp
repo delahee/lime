@@ -87,5 +87,25 @@ namespace lime {
 
 	}
 
+	#ifdef __NINTENDO_SWITCH__
+	const int Gamepad::GetDeviceNpadID (int id) {
+		
+		SDL_Joystick* joystick = SDL_GameControllerGetJoystick (gameControllers[id]);
+		
+		if (joystick) {
+			
+			int npadid = -1;
+			
+			if (SDL_NintendoSwitch_JoystickNpadId(joystick, &npadid) == 0) {
+			
+				return npadid;
+				
+			}
+			
+		}
+		
+		return -1;
+	}
+	#endif
 
 }

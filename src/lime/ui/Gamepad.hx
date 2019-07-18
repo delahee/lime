@@ -102,12 +102,9 @@ class Gamepad {
 
 	@:noCompletion private inline function get_npadid ():Int {
 		var n:Int = -1;
-		trace("goin to cffi");
 		#if (lime_cffi && !macro && switch)
-			trace("goin to cffi /2");
 			n = NativeCFFI.lime_gamepad_get_device_npadid (this.id);
 		#end
-		trace("cffi done");
 		return n;
 	}
 

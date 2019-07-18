@@ -118,7 +118,9 @@ class NativeCFFI {
 	@:cffi private static function lime_gamepad_get_device_guid (id:Int):Dynamic;
 	@:cffi private static function lime_gamepad_get_device_name (id:Int):Dynamic;
 	
-	@:cffi private static function lime_gamepad_get_device_npadid (id:Int):Int;
+	#if switch
+	@:cffi private static function lime_gamepad_get_device_npadid (id:Int):Dynamic;
+	#end
 	
 	@:cffi private static function lime_gamepad_event_manager_register (callback:Dynamic, eventObject:Dynamic):Void;
 	@:cffi private static function lime_gzip_compress (data:Dynamic, bytes:Dynamic):Dynamic;
@@ -144,7 +146,9 @@ class NativeCFFI {
 	@:cffi private static function lime_joystick_get_device_guid (id:Int):Dynamic;
 	@:cffi private static function lime_joystick_get_device_name (id:Int):Dynamic;
 	
-	@:cffi private static function lime_joystick_get_device_npadid (id:Int):Int;
+	#if switch
+	@:cffi private static function lime_joystick_get_device_npadid (id:Int):Dynamic;
+	#end
 	
 	@:cffi private static function lime_joystick_get_num_axes (id:Int):Int;
 	@:cffi private static function lime_joystick_get_num_buttons (id:Int):Int;
@@ -270,10 +274,9 @@ class NativeCFFI {
 	private static var lime_gamepad_add_mappings = new cpp.Callable<cpp.Object->cpp.Void> (cpp.Prime._loadPrime ("lime", "lime_gamepad_add_mappings", "ov", false));
 	private static var lime_gamepad_get_device_guid = new cpp.Callable<Int->cpp.Object> (cpp.Prime._loadPrime ("lime", "lime_gamepad_get_device_guid", "io", false));
 	private static var lime_gamepad_get_device_name = new cpp.Callable<Int->cpp.Object> (cpp.Prime._loadPrime ("lime", "lime_gamepad_get_device_name", "io", false));
-	
-	
-	private static var lime_gamepad_get_device_npadid = new cpp.Callable<Int->Int>(cpp.Prime._loadPrime("lime", "lime_gamepad_get_device_npadid", "ii", false));
-	
+	#if switch
+	private static var lime_gamepad_get_device_npadid = new cpp.Callable<Int->Int> (cpp.Prime._loadPrime ("lime", "lime_gamepad_get_device_npadid", "ii", false));
+	#end
 	private static var lime_gamepad_event_manager_register = new cpp.Callable<cpp.Object->cpp.Object->cpp.Void> (cpp.Prime._loadPrime ("lime", "lime_gamepad_event_manager_register", "oov", false));
 	private static var lime_gzip_compress = new cpp.Callable<cpp.Object->cpp.Object->cpp.Object> (cpp.Prime._loadPrime ("lime", "lime_gzip_compress", "ooo", false));
 	private static var lime_gzip_decompress = new cpp.Callable<cpp.Object->cpp.Object->cpp.Object> (cpp.Prime._loadPrime ("lime", "lime_gzip_decompress", "ooo", false));
@@ -298,8 +301,9 @@ class NativeCFFI {
 	private static var lime_joystick_get_device_guid = new cpp.Callable<Int->cpp.Object> (cpp.Prime._loadPrime ("lime", "lime_joystick_get_device_guid", "io", false));
 	private static var lime_joystick_get_device_name = new cpp.Callable<Int->cpp.Object> (cpp.Prime._loadPrime ("lime", "lime_joystick_get_device_name", "io", false));
 	
+	#if switch
 	private static var lime_joystick_get_device_npadid = new cpp.Callable<Int->Int>(cpp.Prime._loadPrime("lime", "lime_joystick_get_device_npadid", "ii", false));
-	
+	#end
 	private static var lime_joystick_get_num_axes = new cpp.Callable<Int->Int> (cpp.Prime._loadPrime ("lime", "lime_joystick_get_num_axes", "ii", false));
 	private static var lime_joystick_get_num_buttons = new cpp.Callable<Int->Int> (cpp.Prime._loadPrime ("lime", "lime_joystick_get_num_buttons", "ii", false));
 	private static var lime_joystick_get_num_hats = new cpp.Callable<Int->Int> (cpp.Prime._loadPrime ("lime", "lime_joystick_get_num_hats", "ii", false));
@@ -428,8 +432,9 @@ class NativeCFFI {
 	private static var lime_gamepad_get_device_guid = CFFI.load ("lime", "lime_gamepad_get_device_guid", 1);
 	private static var lime_gamepad_get_device_name = CFFI.load ("lime", "lime_gamepad_get_device_name", 1);
 	
+	#if switch
 	private static var lime_gamepad_get_device_npadid = CFFI.load ("lime", "lime_gamepad_get_device_npadid", 1);
-	
+	#end
 	private static var lime_gamepad_event_manager_register = CFFI.load ("lime", "lime_gamepad_event_manager_register", 2);
 	private static var lime_gzip_compress = CFFI.load ("lime", "lime_gzip_compress", 2);
 	private static var lime_gzip_decompress = CFFI.load ("lime", "lime_gzip_decompress", 2);

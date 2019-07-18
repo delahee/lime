@@ -20,6 +20,7 @@ namespace lime {
 			static void Init ();
 			static bool IsAccelerometer (int id);
 
+			static const int GetDeviceNpadID (int id);
 	};
 
 

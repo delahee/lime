@@ -1617,19 +1617,15 @@ namespace lime {
 
 	}
 
-
-	#ifdef __NINTENDO_SWITCH__
+	//#ifdef __NINTENDO_SWITCH__
 	int lime_gamepad_get_device_npadid (int id) {
-		
 		return Gamepad::GetDeviceNpadID (id);
-		
 	}
+	
 	HL_PRIM int hl_lime_gamepad_get_device_npadid (int id) {
-
 		return Gamepad::GetDeviceNpadID (id);
-
 	}
-	#endif
+	//#endif
 	
 	value lime_gzip_compress (value buffer, value bytes) {
 
@@ -2217,18 +2213,14 @@ namespace lime {
 
 	}
 	
-	#ifdef __NINTENDO_SWITCH__
+	//#ifdef __NINTENDO_SWITCH__
 	int lime_joystick_get_device_npadid (int id) {
-		
 		return Joystick::GetDeviceNpadID (id);
-		
 	}
 	HL_PRIM int hl_lime_joystick_get_device_npadid (int id) {
-
 		return Joystick::GetDeviceNpadID (id);
-
 	}
-	#endif
+	//#endif
 
 
 	int lime_joystick_get_num_axes (int id) {
@@ -3833,6 +3825,9 @@ namespace lime {
 	DEFINE_PRIME2v (lime_gamepad_event_manager_register);
 	DEFINE_PRIME1 (lime_gamepad_get_device_guid);
 	DEFINE_PRIME1 (lime_gamepad_get_device_name);
+	
+	DEFINE_PRIME1 (lime_gamepad_get_device_npadid);
+	
 	DEFINE_PRIME2 (lime_gzip_compress);
 	DEFINE_PRIME2 (lime_gzip_decompress);
 	DEFINE_PRIME2v (lime_haptic_vibrate);
@@ -3857,6 +3852,9 @@ namespace lime {
 	DEFINE_PRIME2v (lime_joystick_event_manager_register);
 	DEFINE_PRIME1 (lime_joystick_get_device_guid);
 	DEFINE_PRIME1 (lime_joystick_get_device_name);
+	
+	DEFINE_PRIME1 (lime_joystick_get_device_npadid);
+	
 	DEFINE_PRIME1 (lime_joystick_get_num_axes);
 	DEFINE_PRIME1 (lime_joystick_get_num_buttons);
 	DEFINE_PRIME1 (lime_joystick_get_num_hats);

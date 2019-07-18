@@ -93,7 +93,6 @@ namespace lime {
 
 	}
 	
-	#ifdef __NINTENDO_SWITCH__
 	const int Joystick::GetDeviceNpadID (int id) {
 		
 		int npadid = -1;
@@ -105,7 +104,6 @@ namespace lime {
 		return npadid;
 		
 	}
-	#endif
 
 
 	int Joystick::GetNumAxes (int id) {

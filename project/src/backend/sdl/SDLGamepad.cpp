@@ -87,7 +87,6 @@ namespace lime {
 
 	}
 
-	#ifdef __NINTENDO_SWITCH__
 	const int Gamepad::GetDeviceNpadID (int id) {
 		
 		SDL_Joystick* joystick = SDL_GameControllerGetJoystick (gameControllers[id]);
@@ -106,6 +105,5 @@ namespace lime {
 		
 		return -1;
 	}
-	#endif
 
 }

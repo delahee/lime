@@ -26,9 +26,17 @@
 #include <SDL.h>
 #endif
 
+#ifdef NN_NINTENDO_SDK
+#include <nn/nn_Log.h>
+#include <nn/nn_Assert.h>
+
+#include <nn/init.h>
+#include <nn/hid.h>
+#include <nn/gll.h>
+#endif
+
 
 namespace lime {
-
 
 	bool OpenGLBindings::initialized = false;
 
@@ -37,6 +45,7 @@ namespace lime {
 	void* OpenGLBindings::handle = 0;
 
 	#ifdef NATIVE_TOOLKIT_SDL_ANGLE
+	
 	void* OpenGLBindings::eglHandle = 0;
 	#endif
 
@@ -5332,6 +5341,13 @@ namespace lime {
 			#undef DEFINE_EXTENSION
 			#endif
 
+			#ifdef NN_NINTENDO_SDK
+			printf("nngllInitializeGl\n");
+			nngllResult gllResult = nngllInitializeGl();
+			NN_UNUSED( gllResult );
+			NN_ASSERT_EQUAL( gllResult, nngllResult_Succeeded );
+			printf("nngllInitializeGl OK\n");
+			#endif
 		}
 
 		return result;
